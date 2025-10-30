@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>The Bonsol Roadmap is Live</title>
+   <link rel="icon" type="image/png" sizes="32x32" href="../images/bonsol-Square-Favicon.png">
+   <style>
+       /* Monospace styling */
+       body {
+           font-family: 'Courier New', Courier, monospace;
+           line-height: 1.6;
+           margin: 0;
+           background: #fff;
+           color: #333;
+           padding: 2rem;
+           margin: 0 auto;
+       }
+
+
+       /* Content styling */
+       .content {
+           background: #fff;
+           padding: 0;
+           border: none;
+           max-width: 1000px;
+           margin: 0 auto;
+       }
+
+
+       /* Simplified Navigation styling */
+       .nav {
+           background: #fff;
+           padding: 1rem 0;
+           border: none;
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+       }
+
+
+       .nav-logo {
+           max-width: 200px;
+           height: auto;
+           margin-right: 2rem;
+       }
+
+
+       .nav-links {
+           display: flex;
+           align-items: center;
+       }
+
+
+       .nav a {
+           color: #333;
+           text-decoration: none;
+           margin-right: 2rem;
+           font-family: 'Courier New', Courier, monospace;
+       }
+
+
+       .nav a:hover {
+           text-decoration: underline;
+       }
+
+
+       .nav a.active {
+           text-decoration: underline;
+       }
+       pre {
+           background: #fff;
+           padding: 0;
+           overflow-x: auto;
+           margin: 0;
+           text-align: left;
+           margin-right: 300px;  /* Same alignment as token.html */
+       }
+       .logo {
+           max-width: 300px; /* adjust this value as needed */
+           height: auto;
+           margin-top: 2rem;
+           margin-bottom: 2rem;
+       }
+       /* Horizontal line styling */
+       hr {
+           border: none;
+           height: 1px;
+           margin: 2rem 0;
+           background: repeating-linear-gradient(90deg,
+               #333,
+               #333 10px,
+               transparent 10px,
+               transparent 20px
+           );
+       }
+
+
+       .solid-hr {
+           border: none;
+           height: 1px;
+           background-color: #333;
+           margin: 0rem 0;
+       }
+
+
+       /* Blog post specific styles */
+       .blog-post {
+           max-width: 800px;
+           margin: 0 auto;
+       }
+
+
+       .blog-post img {
+           max-width: 100%;
+           height: auto;
+           margin: 2rem 0;
+       }
+
+
+       .blog-post table {
+           width: 100%;
+           border-collapse: collapse;
+           margin: 2rem 0;
+       }
+
+
+       .blog-post th {
+           background-color: #f5f5f5;
+       }
+
+
+       .blog-post figure {
+           margin: 2rem 0;
+           text-align: center;
+       }
+
+
+       .blog-post figure img {
+           max-width: 100%;
+           height: auto;
+       }
+
+
+       .blog-post figure figcaption {
+           margin-top: 0.5rem;
+           font-size: 0.9em;
+           color: #666;
+       }
+
+
+       .phase-title {
+           color: #333;
+           margin-bottom: 1rem;
+           font-size: 1.2em;
+           font-weight: bold;
+       }
+
+
+       .status-live {
+           color: #28a745;
+           font-weight: bold;
+       }
+
+
+       .status-coming {
+           color: #28a745;
+           font-weight: bold;
+       }
+
+
+       .roadmap-image {
+           text-align: center;
+           margin: 2rem 0;
+       }
+
+
+       .roadmap-image img {
+           max-width: 600px;
+           width: 100%;
+           height: auto;
+       }
+   </style>
+</head>
+<body>
+   <div class="content">
+       <nav class="nav">
+           <img src="../images/bonsol-blackword-logo.png" alt="Bonsol" class="nav-logo">
+           <div class="nav-links">
+               <a href="../index.html">Home</a>
+               <a href="../about.html">About</a>
+               <a href="../collective.html">Collective</a>
+               <a href="../blog.html" class="active">Blog</a>
+               <a href="https://bonsol.gitbook.io/docs" target="_blank">Docs</a>
+               <a href="https://x.com/bonsol_labs" target="_blank">X</a>
+               <a href="https://discord.gg/kQedumSEdy" target="_blank" style="display: inline-flex; align-items: center;">
+                <svg width="20" height="20" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="currentColor"/>
+                </svg>
+            </a>
+           </div>
+       </nav>
+       <hr class="solid-hr">
+
+
+       <div class="blog-post">
+           <img src="../images/bonsol-roadmap.png" alt="Bonsol Blog Post Header" style="width: 100%; margin: 2rem 0;">
+           <h1>The Bonsol Roadmap is Live 🟢</h1>
+
+
+           <p>ICYMI - We're excited to share our <strong>official roadmap</strong> outlining the journey ahead for Bonsol! This roadmap represents our commitment to building the most performant, scalable, and decentralized compute platform for Solana.</p>
+
+
+           <h1>Phase 1 - Public Beta <span class="status-live">(Live)</span></h1>
+          
+           <div class="phase-box">
+               <div class="phase-title">Current Focus: Usability & Onboarding</div>
+               <ul>
+                   <li><strong>Verifiable compute framework</strong> - Core infrastructure for off-chain computation</li>
+                   <li><strong>Bonsol CLI</strong> - Command-line tools for developers</li>
+                   <li><strong>Bonsol SDK</strong> - Software development kit for easy integration</li>
+                   <li><strong>Documentation & Tutorials</strong> - Comprehensive guides for developers</li>
+                   <li><strong>PoC development & Use case exploration</strong> - AI perceptron models, gaming examples, verifiable finance</li>
+                   <li><strong>Hackathons</strong> - Community engagement and innovation</li>
+               </ul>
+               <p><strong>Focus:</strong> Onboarding experience, comprehensive documentation and tutorials to make it easier to develop with Bonsol. This phase also features proof-of-concept developments, partner integrations, and community engagement through early user feedback. We're welcoming any interested partners to join our ecosystem, the Bonsol Collective, to test our platform!</p>
+           </div>
+
+
+           <h1>Phase 2 - Public Alpha <span class="status-coming">(Coming Q1 2026)</span></h1>
+          
+           <div class="phase-box">
+               <div class="phase-title">Next Focus: Sustainability & Economics</div>
+               <ul>
+                   <li>Anchor support and Dev Tooling - Enhanced development experience</li>
+                   <li>macOS compatibility - Cross-platform support</li>
+                   <li>Verifiable functions and Pinocchio support - Additional proof systems</li>
+                   <li>Advanced proof explorer - Track the full proof lifecycle</li>
+                   <li>Other leading zkVMs integration - Expand beyond RISC Zero</li>
+                   <li>Prover Network infrastructure - Cost estimations, workload allocation, incentives and punishment mechanisms</li>
+                   <li>Core protocol audit - Security verification</li>
+               </ul>
+               <p><strong>Focus:</strong> Building advanced infrastructure for the Prover Network, including its cost estimations, workload allocation, and incentives and punishment mechanisms, supported by feedback from early ecosystem partners. To reinforce security and stability, we will conduct thorough testing of the economics model prior to the next phase.</p>
+           </div>
+
+
+           <h1>Phase 3 - Incentivised Testnet & Mainnet <span class="status-coming">(Q3+ 2026)</span> </h1>
+          
+           <div class="phase-box">
+               <div class="phase-title">Future: Full Decentralization & Governance</div>
+               <ul>
+                   <li>Incentivized testnet - For provers and application builders starting Q3 2026</li>
+                   <li>Mainnet launch - With live Prover Network</li>
+                   <li>Additional testnet features - Enhanced functionality</li>
+                   <li>Token Program Audit + Tokenomics Paper - Economic model transparency</li>
+                   <li>Community Governance - Bonsol Foundation establishment</li>
+                   <li>TGE + Listing - Token Generation Event and official exchange listings</li>
+                   <li>Audit & Bug Bounty - Finalizing core technology with thorough security verification</li>
+               </ul>
+               <p>Focus: This stage will introduce additional testnet features and include both a token program audit and the release of the tokenomics paper. It will also mark the start of community governance through the Bonsol Foundation. To support a smooth Mainnet launch, we will anchor on any feedback gathered during the testnet phase, while audits and a bug bounty program will finalize the core platform.</p>
+           </div>
+
+
+           <h1>The Future of Verifiable Compute</h1>
+           <p>In 2025, as trust erodes, the demand for trustless and verifiable solutions is growing rapidly. Verifiable compute is the future and Bonsol makes it powerful.</p>
+
+
+           <p>Bonsol is creating the first verifiable computation framework designed to extend Solana's computational boundaries. Imagine a future where a wide range of applications previously impossible on Solana like:</p>
+
+
+           <ul>
+               <li> Provable game engines</li>
+               <li> Verifiable autonomous agents</li>
+               <li> Private liquidity pools</li>
+           </ul>
+
+
+           <p>That's actually not the future. That's Bonsol. Now.</p>
+
+
+           <h1>Important Note</h1>
+           <p>The roadmap is a living document and subject to change. Any updates or adjustments will be shared transparently in our monthly recaps and community channels.</p>
+
+
+           <h1>Join Our Community</h1>
+           <p>Ready to be part of the verifiable compute revolution on Solana? Join our community channel on Telegram and start building the future today!</p>
+          
+           <p>Don't get left behind. The future of verifiable compute on Solana is here, and it's called Bonsol.</p>
+
+
+           <!-- footer -->
+           <br>
+           <h3>Start building on Bonsol today:</h3>
+           <p><a href="https://bonsol.org/">Website</a> | <a href="https://bonsol.gitbook.io/docs">Docs</a> | <a href="https://github.com/bonsol-collective/bonsol">GitHub</a> | <a href="https://x.com/bonsol_labs">X</a> | <a href="https://t.me/bonsolsh">Telegram</a> | <a href="https://discord.gg/Met32WpN">Discord</a></p>
+       </div>
+   </div>
+</body>
+</html>
+
+
+
