@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lazy Developer’s Guide to ZK</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/bonsol-Square-Favicon.png">
+    <style>
+        /* Monospace styling */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            margin: 0;
+            background: #fff;
+            color: #333;
+            padding: 2rem;
+            margin: 0 auto;
+        }
+
+        /* Content styling */
+        .content {
+            background: #fff;
+            padding: 0;
+            border: none;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Simplified Navigation styling */
+        .nav {
+            background: #fff;
+            padding: 1rem 0;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            max-width: 200px;
+            height: auto;
+            margin-right: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .nav a.active {
+            text-decoration: underline;
+        }
+
+        pre {
+            background: #fff;
+            padding: 0;
+            overflow-x: auto;
+            margin: 0;
+            text-align: left;
+            margin-right: 300px;  /* Same alignment as token.html */
+        }
+
+        .logo {
+            max-width: 300px; /* adjust this value as needed */
+            height: auto;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Horizontal line styling */
+        hr {
+            border: none;
+            height: 1px;
+            margin: 2rem 0;
+            background: repeating-linear-gradient(90deg,
+                #333,
+                #333 10px,
+                transparent 10px,
+                transparent 20px
+            );
+        }
+
+        .solid-hr {
+            border: none;
+            height: 1px;
+            background-color: #333;
+            margin: 0rem 0;
+        }
+
+        /* Blog post specific styles */
+        .blog-post {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem 0;
+        }
+
+        .blog-post table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .blog-post th, .blog-post td {
+            border: 1px solid #333;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        .blog-post th {
+            background-color: #f5f5f5;
+        }
+
+        .blog-post figure {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .blog-post figure img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .blog-post figure figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <nav class="nav">
+            <a href="../index.html">
+                <img src="../images/bonsol-blackword-logo.png" alt="Bonsol" class="nav-logo">
+            </a>
+            <div class="nav-links">
+                <a href="../about.html">About</a>
+                <a href="../collective.html">Collective</a>
+                <a href="../blog.html" class="active">Blog</a>
+                <a href="https://examples.bonsol.org" target="_blank">Examples</a>
+                <a href="https://bonsol.gitbook.io/docs" target="_blank">Docs</a>
+                <a href="https://x.com/bonsol_labs" target="_blank">X</a>
+                <a href="https://discord.gg/kQedumSEdy" target="_blank" style="display: inline-flex; align-items: center;">
+                    <svg width="20" height="20" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="currentColor"/>
+                </svg>
+            </a>
+        </div>
+    </nav>
+    <hr class="solid-hr">
+
+        <div class="blog-post">
+            <img src="../images/lazy3.png" alt="Bonsol Blog Post Header" style="width: 100%; margin: 2rem 0;">
+            <h1>The Lazy Developer’s Guide to ZK</h1>
+
+            <p>What if you could convince someone that you have solved a complex problem, without showing your work? This is exactly what Zero-Knowlege Proof enables.</p>
+            
+            <p>ZK Proof allows one party to prove the correctness of a computation while revealing nothing about the inputs or internal steps. This allows private transactions, trustless off-chain computation and proof driven architecture on chains like solana.</p>
+
+            <p>In this guide, we'll break down ZK Proofs, how zk-SNARKs and zk-STARKs differ, and how Bonsol makes it dead-simple to ship ZK-powered apps.</p>
+
+            <h1>What is Zero-Knowledge Proof?</h1>
+            <p>A <strong>Zero-Knowledge Proof (ZKP)</strong> lets a <em>prover</em> convince a <em>verifier</em> that a statement is true without revealing why it is true.</p>
+
+            <h3>Real-world analogies</h3>
+            <ul>
+                <li><strong>Nuclear code</strong>:Imagine a person has access to a highly secure nuclear launch code. The only current way to prove possession is to launch a missile—a highly destructive and irreversible action. But what if they could instead prove they know the code, without revealing the code or causing destruction?
+    
+                    A Zero-Knowledge Proof does exactly this. It lets you prove you have the right code, by mathematically demonstrating knowledge, without ever sharing the code or triggering any action.</li>
+                <li><strong>Alibaba’s cave</strong>
+                    <img src="../images/lazy1.png" alt="Alibaba's cave" style="width: 100%; margin: 2rem 0;">
+                    
+            <p>You know the secret passphrase that opens a magic door inside a circular.</p>
+
+<p><strong>Setup:</strong> A cave has two paths - Left and Right, that’s meet at a magical locked door. Only the secret passphrase can open it.</p>
+
+<p><strong>Flow:</strong>
+<ul>
+<li><strong>Prover</strong> enters the cave randomly through L or R.
+</li>
+<li><strong>Verifier</strong> stands outside and shouts which path they want you to exit from.
+</li>
+<li>If you know the passphrase, you open the door and come out as requested.
+</li>
+<li>If you don’t know the password, you can only come out correctly when the verifier's requested path matches the one you already entered (50% chance).
+</li>
+</p>                
+                   
+
+            <h1>What makes a proof zero-knowledge?</h1>
+            For a proof to be considered a ZKP, it must satisfy three key properties:
+            <ol>
+                <li><strong>Completeness</strong>: If the statement is true, the verifier will be convinced by an honest prover.</li>
+                <li><strong>Soundness</strong>: If the statement is false, no cheating prover can convince the verifier otherwise.</li>
+                <li><strong>Zero-Knowledge</strong>: If the statement is true, the verifier learns nothing other than that it is true (no leak of the underlying secret).</li>
+            </ol>
+            These conditions ensure both correctness and privacy.
+            
+            <h1>Why do ZK proofs exist?</h1>
+            
+            <p>Blockchain systems are public and trustless, but it has 2 major limitations:</p>
+
+            <ul>
+                <li>Privacy</li>
+                <li>Computation Limits</li>
+            </ul>
+
+ <p>ZK Proof gives infinite compute capability, by allowing heavy computation to be done off-chain, and then verified on-chain using a small proof. This is useful in AI, where large model inferences can be proven without revealing the inputs, logic, or parameters.</p>
+
+<p>This means:</p>
+<ul>
+    <li>We don’t pay on-chain gas for computation.</li>
+    <li>Verifiers instantly validate the proof.</li>
+</ul>
+
+            <h1>Zero-Knowledge Proof use cases</h1>
+            <h3>1. Finance</h3>
+
+            <p></strong>Why ZK matters:</strong>  It lets systems prove things like balances or transactions without revealing the amounts or sensitive data.</p>
+
+            <ul>
+                <li>ZCash: Enables fully private transactions on a public blockchain.</li>
+                <li>Proof of Reserves: Exchanges like Kraken are exploring ZKPs to prove they hold customer assets without revealing wallet balances.</li>
+                <li>Private DeFi: Umbra Protocol and Aztec Network use ZKPs to enable stealth payments and shielded smart contracts.</li>
+            </ul>
+            
+            <h3>2. Artificial Intelligence</h3>
+
+            <p><strong>Why ZK matters</strong>: It lets systems prove things like balances or transactions without revealing the amounts or sensitive data.</p>
+            
+            <ul>
+                <li>ZKML: Projects like zkML and Giza are enabling proofs of neural network inference, e.g. proving that a model correctly classified an image or decision without revealing model weights or inputs.</li>
+                <li>Infinite Compute: Run heavy ML computations (e.g. GPT or image models) off chain, then just submit a ZK proof on-chain to verify the output.</li>
+            </ul>
+           
+            
+            <h3>3. Gaming</h3>
+            
+            <p><strong>Why ZK matters</strong>: It keeps hidden game actions private while still proving the game is fair.</p>
+            
+            <ul>
+                <li>Private state: Keep moves hidden (e.g. poker, battleship).</li>
+                <li>Prove fairness: Show that a random number or winner selection was unbiased without revealing internal logic.</li>
+            </ul>
+            
+            <h3>4. Location & Data Attestation</h3>
+            
+            <p><strong>Why ZK matters</strong>: It proves claims like location or data submission without revealing the actual information.</p>
+            
+            <ul>
+                <li>Proof of location: Verifiable claims that someone was in a specific place without GPS leakage.</li>
+                <li>Proof of content submission: Like in Bonsol’s proof-of-post, prove you submitted data without revealing the actual content.</li>
+            </ul>
+        
+            
+            <h1>zk-SNARKs vs. zk-STARKs</h1>
+            <p>Both zk-STARK and zk-SNARK are difference ways to create zero knowledge proofs.They let us prove that a computation was done correctly without showing the actual data.</p>
+            
+            <h3>zk-SNARKs</h3>
+            <p>It creates a very small proofs that blockchains can verify quickly and cheaply.</p>
+            <ul>
+                <li>Tiny proofs (~200 bytes) and very fast verification.</li>
+                <li>Great for on-chain verification costs.</li>
+                <li>Uses elliptic-curve math (not quantum-safe).</li>
+            </ul>
+
+            <h3>zk-STARKs</h3>
+            <ul>
+                <li>Larger proofs (10–100 KB) but quantum-resistant.</li>
+                <li>Based on hash functions (safe against quantum attacks)</li>
+                <li>Great for scaling big off-chain computations</li>
+            </ul>
+
+            <p><strong>Best practice:</strong> Prove with STARK (e.g., RISC Zero) → wrap to a Groth16 SNARK → verify on-chain. You get scalable compute and compact verification.</p>
+
+            <h1>RISC Zero</h1>
+            <p>It is a Zero-Knowledge Virtual Machine (zkVM) that lets you write and prove programs in Rust. It compiles the code into a RISC-V binary then runs the code and generates a STARK proof of execution.</p>
+
+            <p><strong>Flow:</strong></p>
+
+            <ul>
+                <li>RISC Zero proves the off-chain logic.</li>
+                <li>Then the STARK proof is converted to a Groth16 SNARK.</li>
+                <li>This SNARK is verified by a smart contract on Solana.</li>
+            </ul>
+    
+            <h1>Bonsol: ZK co-processor for Solana</h1>
+            <p>Bonsol lets you offload compute-heavy logic off-chain and submit lightweight proofs back to Solana. It is built on RISC Zero and follows the STARK → SNARK flow to keep verification fast.</p>
+
+            <h3>Why Bonsol?</h3>
+            <ul>
+                <li>Extend Solana's compute limits</li>
+                <li>Verifiable off-chain logic** (math, AI, game logic, etc.)</li>
+                <li>Rust-native and Solana-aligned</li>
+                <li>SNARK-compatible proofs for cheap verification</li>
+            </ul>
+
+            <h3>Where to use it</h3>
+            <ul>
+                <li>Game logic (fair winner selection).</li>
+                <li>AI inference (prove predictions without exposing inputs).</li>
+                <li>Content proofs (like Bonsol’s proof-of-post).</li>
+            </ul>
+
+            <h3>How it works</h3>
+
+            <img src="../images/lazy2.png" alt="Alibaba's cave" style="width: 100%; margin: 2rem 0;">
+
+            <h3><strong>Phase 1: Request Submission</strong></h3>
+
+            <p><strong>A client application prepares an execution request that includes:</strong></p>
+            
+            <ul>
+                <li>ZK Program ID – an identifier for the registered ZK circuit/binary to execute</li>
+                <li>Inputs</li>
+                    <ul>
+                        <li>Public inputs, which are stored on-chain</li>
+                        <li>Commitments for private inputs, while the actual private data is shared off-chain with the prover</li>
+                    </ul>
+                <li>Payment details – fee token, amount, and payer for the execution service</li>
+                <li>Execution parameters – e.g., max latency, priority, proof system type, etc.</li>
+          
+            <p><strong>The client sends a single transaction to the Bonsol Program on Solana.</strong></p>
+            
+            <p><strong>The Bonsol Program:</strong></p>
+            
+            <ul>
+                <li>Creates a new Request account (PDA) for this job</li>
+                <li>Records all metadata and locks the payment</li>
+                <li>Sets the initial status to Pending</li>
+            </ul>
+            
+            <p>This initializes the on-chain workflow for the ZK execution.</p>
+            
+            <h3><strong>Phase 2: On-Chain Processing</strong></h3>
+            
+            <p><strong>Once the Bonsol Program receives the request, it:</strong></p>
+            
+            <ul>
+                <li>Validates the payment</li>
+                <li>Confirms the program ID</li>
+                <li>Checks the input data hash</li>
+                <li>Stores the request on-chain</li>
+            </ul>
+            <p>It then emits an execution event and Leaves the Request account in the Pending state, which is detected by off-chain prover nodes.</p>
+            
+            <h3><strong>Phase 3: Off-Chain Execution</strong></h3>
+            
+            <p><strong>Execution nodes monitor the chain for new requests.</strong></p>
+            
+            When a node picks up a request:
+            
+            <ul>
+                <li>It downloads the ZK program binary</li>
+                <li>Retrieves the input data</li>
+                <li>Initializes a secure RISC Zero zkVM environment</li>
+                <li>Executes the program with private inputs</li>
+            </ul>
+            
+            <p>This produces computation results without revealing the inputs.</p>
+        
+            
+            <h3><strong>Phase 4: Proof Generation and Verification</strong></h3>
+            
+            <p><strong>After execution:</strong></p>
+            
+            <ul>
+                <li>The node generates a STARK proof attesting correct execution</li>
+                <li>Submits the proof and outputs back to the Bonsol Program</li>
+            </ul>
+            <p><strong>The Bonsol Program:</strong></p>
+            
+            <ul>
+                <li>Cryptographically verifies the proof</li>
+                <li>Ensures program ID and outputs match</li>
+                <li>Confirms correctness without seeing private data</li>
+            </ul>
+            
+            <h3><strong>Phase 5: Settlement and Retrieval</strong></h3>
+            
+            <p><strong></strong>Once the proof is verified:</strong></p>
+            
+            <ul>
+                <li>Escrowed funds are released to pay the execution node</li>
+                <li>Verified results are written on-chain</li>
+                <li>The client can retrieve final outputs</li>
+            </ul>
+            
+            <p>This completes the trustless proof-of-execution cycle.</p>
+            
+            <p><strong>Behind the scenes:</strong></p>
+            
+            <ul>
+                <li>Your logic runs in RISC Zero (zkVM)</li>
+                <li>STARK proof is generated and SNARKified</li>
+                <li>Solana contract verifies that proof</li>
+            </ul>
+
+
+            <h3>Repos to explore</h3>
+            <ul>
+                <li><a href="https://github.com/bonsol-collective/bonsol-ai">bonsol-ai</a></li>
+                <li><a href="https://github.com/bonsol-collective/examples">examples</a></li>
+                <li><a href="https://github.com/bonsol-collective/bonsol-pow-pow">bonsol-pow-pow</a></li>
+                <li><a href="https://github.com/bonsol-collective/bonsol-anchor-interface">bonsol-anchor-interface</a></li>
+                <li><a href="https://github.com/bonsol-collective/proof-of-post">proof-of-post</a></li>
+            </ul>
+
+            <h1>Summary</h1>
+            <p>ZK proofs aren't just for privacy—they're for scalable, verifiable, trustless logic. Bonsol makes it possible to build with ZK on Solana by abstracting away the implementation overhead.</p>
+
+            <!-- footer -->
+            <br>
+            <h3>Start building on Bonsol today:</h3>
+            <p><a href="https://bonsol.org/">Website</a> | <a href="https://bonsol.gitbook.io/docs">Docs</a> | <a href="https://github.com/bonsol-collective/bonsol">GitHub</a> | <a href="https://x.com/bonsol_labs">X</a> | <a href="https://t.me/bonsolsh">Telegram</a> | <a href="https://discord.gg/Met32WpN">Discord</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
