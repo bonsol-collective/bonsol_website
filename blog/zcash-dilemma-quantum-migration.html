@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Zcash Dilemma: When Privacy Protocols Meet Quantum Migration</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/bonsol-Square-Favicon.png">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            margin: 0;
+            background: #fff;
+            color: #333;
+            padding: 2rem;
+        }
+
+        .content {
+            background: #fff;
+            padding: 0;
+            border: none;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            background: #fff;
+            padding: 1rem 0;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            max-width: 200px;
+            height: auto;
+            margin-right: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .nav a.active {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            margin: 2rem 0;
+            background: repeating-linear-gradient(90deg,
+                #333,
+                #333 10px,
+                transparent 10px,
+                transparent 20px
+            );
+        }
+
+        .solid-hr {
+            border: none;
+            height: 1px;
+            background-color: #333;
+            margin: 0rem 0;
+        }
+
+        .blog-post {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-post figure {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .blog-post figure img {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            display: block;
+            image-orientation: from-image;
+        }
+
+        .blog-post ul,
+        .blog-post ol {
+            padding-left: 1.25rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .sources {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <nav class="nav">
+            <a href="../index.html">
+                <img src="../images/bonsol-blackword-logo.png" alt="Bonsol" class="nav-logo">
+            </a>
+            <div class="nav-links">
+                <a href="../about.html">About</a>
+                <a href="../collective.html">Collective</a>
+                <a href="../blog.html" class="active">Blog</a>
+                <a href="https://examples.bonsol.org" target="_blank">Examples</a>
+                <a href="https://bonsol.gitbook.io/docs" target="_blank">Docs</a>
+                <a href="https://x.com/bonsol_labs" target="_blank">X</a>
+                <a href="https://discord.gg/kQedumSEdy" target="_blank" style="display: inline-flex; align-items: center;">
+                    <svg width="20" height="20" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="currentColor"/>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+        <hr class="solid-hr">
+
+        <div class="blog-post">
+            <h1>The Zcash Dilemma: When Privacy Protocols Meet Quantum Migration</h1>
+            <figure>
+                <img src="../images/dilemma.jpg" alt="Bonsol-Image-Dilemma">
+                <!-- <figcaption>Bonsol In Action</figcaption> -->
+            </figure>
+            <p class="subtitle"><em>Every privacy protocol built on elliptic curve cryptography will eventually face the same question: how do you migrate to post-quantum security without destroying the privacy you had set out to protect?</em></p>
+
+            <p>Zcash is the clearest case study. A protocol that has been built by some of the most sophisticated applied cryptographers in the industry was designed in an era when elliptic curve assumptions were considered safe. Indeed, the architecture that made Zcash pioneering is now the source of a dilemma that has no clear solution.</p>
+            <p>This problem is not unique to Zcash, however. Any privacy protocol that places encrypted secrets on a public, immutable ledger using classical cryptography will face a similar problem to this.</p>
+
+            <h2>The Quantum Attack Surface</h2>
+            <p>Google's March 30 paper <em>Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities</em> provided an analysis of the quantum attack surface of elliptic curve-based blockchains [1]. The paper primarily focuses on Ethereum, where Google identified five independent attack vectors spanning account keys, smart contract admin keys, code-level vulnerabilities, Proof-of-Stake consensus, and Data Availability Sampling, all of which are rooted in the elliptic curve discrete logarithm problem (ECDLP) that Shor's algorithm solves [2].</p>
+            <p>Zcash's Orchard protocol is built on the same class of cryptographic assumption. Its note encryption derives keys from the elliptic curve Diffie-Hellman on the Pallas/Vesta curve cycle [3]. Its Halo 2 proof system relies on an Inner Product Argument whose soundness depends on discrete log hardness [4]. Its spend authorization and binding signatures use RedPallas, a Schnorr-like scheme on the Pallas curve [5]. Its diversified address unlinkability, which Google specifically discusses in the context of Zcash [6], depends on the discrete log relationship between curve points remaining unknown.</p>
+            <p>The same class of vulnerabilities that Google documented against Ethereum applies across Zcash's entire cryptographic stack: encryption, proofs, signatures, and address privacy. Each depends on elliptic curve assumptions that a cryptographically relevant quantum computer breaks. Google's paper explicitly highlights "Zcash's newest shielded pool's resilience against quantum attacks on protocol parameters" as an area of relative strength [7], but the underlying ECDLP dependency remains across the other components.</p>
+
+            <h2>The Dilemma</h2>
+            <p>The standard response is that Zcash can migrate. They've done it before in Sprout to Sapling and Sapling to Orchard. Each of these upgrades came with a new shielded pool and an upgraded ZK proving system [8].</p>
+            <p>But post-quantum migration for a privacy protocol is structurally different from a proving system upgrade. The mechanism that enables a migration is the same mechanism that undermines the privacy it is trying to enforce.</p>
+            <p>Zcash's architecture includes a safety feature called the Turnstile. It tracks total supply across shielded pools by requiring assets to pass through a transparent intermediary when moving between them [9]. In previous pool transitions, users who moved funds between Sprout and Sapling had to route through a transparent address, exposing their balances in the process [10].</p>
+            <p>A future migration from Orchard to a post-quantum pool is under discussion and the exact mechanism for how to do this is an open question. But any migration path must solve the same fundamental problem, i.e moving value out of a pool whose cryptographic assumptions are compromised. If the path requires transparency, as previous migrations have, every migrating user's balance becomes public. The privacy they were paying for is destroyed in the process of upgrading it.</p>
+            <p>This is the dilemma: the upgrade to better privacy may require first sacrificing all existing privacy.</p>
+
+            <h2>The Design Constraints</h2>
+            <p>Privacy is not the only constraint, a migration design must also carefully navigate a timing problem.</p>
+            <p>Zcash's spending keys in the Orchard pool are derived from elliptic curve cryptography [3]. A quantum attacker who can solve the discrete logarithm problem can derive spending keys, gaining the ability to spend other people's funds.</p>
+            <p>During any migration window, two things are true simultaneously: the old pool's keys are quantum-vulnerable, and users need time to move their funds to the new pool.</p>
+            <p>A long migration window creates a race condition. A quantum-equipped attacker has every spending key and can automate drainage, whereas legitimate users must manually initiate transactions. The advantage favors the attacker. Google's analysis of on-spend attack timing is relevant here: the probability of a successful on-spend attack on Zcash, whose target block time is 75 seconds, is less than one in thirteen hundred [1].</p>
+            <p>A short migration window which attempts to circumvent the quantum adversaries front-running attack does so by having the old pool frozen and the new pool activated simultaneously. But this risks stranding funds belonging to users who haven't pre-migrated. There is no graceful way to force millions of dollars in shielded value through a transition on a deadline.</p>
+            <p>The argument here is that these are not implementation details to be solved later. They are structural constraints that any post-quantum migration for a privacy protocol must address. No deployed solution has demonstrated a solution to both simultaneously.</p>
+
+            <h2>Ongoing Mitigation Efforts</h2>
+            <p>Zcash developers are aware of these constraints and are pursuing alternatives. Project Tachyon aims to eliminate on-chain ciphertexts entirely, which would remove the harvest-now-decrypt-later attack surface for future transactions [11]. Their cryptographers are exploring quantum recoverability techniques that could allow users to re-secure assets under post-quantum conditions without passing through a transparent pool [12].</p>
+            <p>In a whiteboard session posted on April 3, 2026, @ebfull and @zkDragon walked through a full post-quantum migration plan covering three workstreams [15]. The nearest-term is Quantum Recoverability, a wallet-only update requiring no hard fork that adds post-quantum binding to Orchard note commitments. If a cryptographically relevant quantum computer arrives the pool is frozen and funds are recovered in place rather than routed through a transparent intermediary [15]. For key exchange the team is building a private information retrieval (PIR) registry that lets users share a 32-byte digest instead of a full 1KB ML-KEM public key, decoupling the payment protocol from on-chain size constraints. A prototype is appearing first in a voting protocol with payment integration targeted for summer 2026 [15]. The third cryptographic upgrade is a migration to a recursive proof-carrying-data architecture that replaces IPA with FRI and RedPallas with post-quantum signatures [15], [16].</p>
+            <p>These are serious research efforts from talented cryptographers, but they face real world challenges. The strategies being contemplated are unproven at protocol scale. They require cryptographic innovations and social consensus that have not been demonstrated in production and must be designed, implemented, audited, and deployed across a network with real user funds. This is a process that historically takes years and can cause implementation errors that can be as dangerous as the threats they aim to prevent.</p>
+            <p>Even Justin Thaler, who argues most blockchains do not need to rush post-quantum signatures, makes an explicit exception for privacy chains identifying them as the one category where harvest-now-decrypt-later attacks create real urgency. He writes: "The exception as of today is privacy chains, many of which encrypt or otherwise hide recipients and amounts. That confidentiality can be harvested now and retroactively deanonymized once a quantum computer can break elliptic-curve cryptography" [13]. But he also warns that rushing a migration introduces implementation risks that may be worse than the quantum threat itself in the near term, recommending that teams "prioritize implementation security" over quantum threat mitigation [13]. This is the trap. Urgency is real, but so is the danger of moving too fast.</p>
+            <p>The question is whether a protocol with billions in shielded value is willing to bet on a migration process that may or may not produce a successful result before quantum hardware reaches cryptographic relevance. Balance this with the fact that every year of delay is another year of ciphertext accumulating on a public ledger under classical encryption.</p>
+
+            <h2>What Migration Cannot Fix</h2>
+            <p>Even if Zcash executes a flawless migration, i.e. where every user successfully moves to a quantum-safe pool, no funds lost, no race conditions exploited, three categories of damage are permanent:</p>
+            <ul>
+                <li><strong>Retroactive decryption of note payloads</strong>: This attack requires both a CRQC and the possession of the target's payment address. Without the address, Zcash's shielded transactions are completely indistinguishable on-chain [14]. The specific vulnerability is the ECDH key exchange used in Zcash's in-band secret distribution [3] whose security depends on elliptic curves. A quantum adversary who breaks the key exchange can decrypt note payloads to reveal transaction amounts and memos, but only for addresses they already possess before the migration completes. A nation-state that has collected payment addresses through surveillance, subpoenas, or exchange KYC records can pair those addresses with decrypted note payloads to reconstruct transaction histories. Since the ciphertext is already on-chain, cannot be recalled and will be available to a quantum adversary. This targeted deanonymization requires off-chain identification paired with a CRQC and is not blanket decryption of all on-chain data.</li>
+                <li><strong>Historical counterfeiting</strong>: Zcash's Halo 2 proof system relies on an Inner Product Argument whose soundness depends on discrete log hardness over the Vesta curve [4]. A quantum computer breaks this assumption. With soundness compromised, an attacker could in theory construct valid-looking proofs for false statements, including proofs that claim ownership of funds that do not exist. Though the practical gap between a theoretical soundness break and successfully minting undetectable tokens in production involves significant additional engineering.</li>
+                <li><strong>Address linkability</strong>: Zcash allows users to generate unlimited diversified addresses from a single viewing key, so that no observer can tell whether two addresses belong to the same person. A quantum computer derives the incoming viewing key from any diversified address, linking all of a user's addresses together and destroying pseudonymity for every address ever created under the old key structure. Google's paper specifically discusses this vulnerability in the context of Zcash, classifying it as an attack on confidentiality via "attacks on unlinkability of diversified addresses" [6]. The spending key is not recovered through this attack vector resulting in deanonymization without enabling theft, but the privacy damage is permanent.</li>
+            </ul>
+            <h2>Privacy Has a Problem</h2>
+            <p>This is not just a Zcash problem. Every privacy protocol built on elliptic curve cryptography will eventually face some version of this dilemma. The specifics vary of course. Different proving systems, different encryption schemes, different migration architectures, but the structural problem is the same.</p>
+            <p>For most blockchains, "migrate when the time comes" is a reasonable position. Digital signatures can be upgraded. Historical transactions remain secure. The damage model is forward-looking.</p>
+            <p>Privacy protocols are different. The damage model is backward-looking. The encrypted data is already on a public ledger, the proofs are already committed and addresses are already linked to keys. Migration protects the future but cannot repair the past.</p>
+            <p>The industry needs to reckon with a difficult question: is post-quantum migration even possible for protocols where the surface area for attack begins before a CRQC arrives? Or does the architecture of a privacy protocol on public ledgers require quantum safety from the start?</p>
+
+            <div class="sources">
+                <h2>Sources</h2>
+                <ol>
+                    <li>R. Babbush, A. Zalcman, C. Gidney, M. Broughton, T. Khattar, H. Neven, T. Bergamaschi, J. Drake, D. Boneh, “Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities: Resource Estimates and Mitigations,” Google Quantum AI, March 30, 2026. <a href="https://quantumai.google/static/site-assets/downloads/cryptocurrency-whitepaper.pdf" target="_blank" rel="noopener noreferrer">PDF</a></li>
+                    <li>Ibid., Section V: “Quantum Vulnerabilities of the Ethereum Blockchain.”</li>
+                    <li>ZIP 224: Orchard Shielded Protocol. <a href="https://zips.z.cash/zip-0224" target="_blank" rel="noopener noreferrer">zips.z.cash/zip-0224</a></li>
+                    <li>Halo 2 proving system as specified in ZIP 224 and the Zcash Protocol Specification (Version 2025.6.3).</li>
+                    <li>ZIP 224: Orchard RedPallas / RedDSA details. <a href="https://zips.z.cash/zip-0224" target="_blank" rel="noopener noreferrer">zips.z.cash/zip-0224</a></li>
+                    <li>Google Quantum AI [1], Section II.A and Section VI.B (“Privacy-Preserving Blockchains”).</li>
+                    <li>Google Quantum AI [1], Introduction: note on Zcash’s newest shielded pool.</li>
+                    <li>Zcash Documentation: “Addresses and Value Pools in Zcash.” <a href="https://zcash.readthedocs.io/en/master/rtd_pages/addresses.html" target="_blank" rel="noopener noreferrer">zcash.readthedocs.io</a></li>
+                    <li>Zcash Documentation: Turnstile / pool migration behavior. <a href="https://zcash.readthedocs.io/en/master/rtd_pages/addresses.html" target="_blank" rel="noopener noreferrer">zcash.readthedocs.io</a></li>
+                    <li>Zcash Documentation: “Sprout-to-Sapling Migration.” <a href="https://zcash.readthedocs.io/en/latest/rtd_pages/sapling_turnstile.html" target="_blank" rel="noopener noreferrer">zcash.readthedocs.io</a></li>
+                    <li>S. Bowe, “Tachyon: Scaling Zcash with Oblivious Synchronization,” April 2025.</li>
+                    <li>Quantum recoverability discussions (wallet-only mitigation / recoverability techniques).</li>
+                    <li>J. Thaler, “Quantum Computing and Blockchains: Matching Urgency to Actual Threats,” a16z crypto, Dec 5, 2025. <a href="https://a16zcrypto.com/posts/article/quantum-computing-misconceptions-realities-blockchains-planning-migrations/" target="_blank" rel="noopener noreferrer">a16zcrypto.com</a></li>
+                    <li>S. Bowe, “Zcash and Quantum Computers.” <a href="https://seanbowe.com/blog/zcash-and-quantum-computers/" target="_blank" rel="noopener noreferrer">seanbowe.com</a></li>
+                    <li>S. Bowe &amp; Dev, whiteboard session on Zcash PQ roadmap, April 3, 2026. <a href="https://x.com/TachyonZcash/status/2040174642741342598" target="_blank" rel="noopener noreferrer">x.com</a></li>
+                    <li>Project Tachyon. <a href="https://tachyon.z.cash" target="_blank" rel="noopener noreferrer">tachyon.z.cash</a></li>
+                </ol>
+            </div>
+
+            <br>
+            <h3>Start building on Bonsol today:</h3>
+            <p><a href="https://bonsol.org/">Website</a> | <a href="https://bonsol.gitbook.io/docs">Docs</a> | <a href="https://github.com/bonsol-collective/bonsol">GitHub</a> | <a href="https://x.com/bonsol_labs">X</a> | <a href="https://t.me/bonsolsh">Telegram</a> | <a href="https://discord.gg/Met32WpN">Discord</a></p>
+        </div>
+    </div>
+</body>
+</html>
